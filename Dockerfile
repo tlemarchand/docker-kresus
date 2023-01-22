@@ -1,6 +1,9 @@
 FROM node:16-bullseye-slim
 LABEL maintainer="Thomas Lemarchand"
 
+COPY woob_version /tmp/woob_version
+COPY kresus_version /tmp/kresus_version
+
 # Install Woob OS-level dependencies.
 # Mundane tasks, all in one to reduce the number of layers:
 # - Make sure the UTF-8 locale exists and is used by default.
@@ -18,8 +21,8 @@ RUN apt-get update && \
     groupadd -g 900 -r kresus && useradd --no-log-init -u 900 -r -g kresus kresus && \
     mkdir -p /var/lib/kresus && \
     pip install --upgrade setuptools && \
-    pip install simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow woob  && \
-    yarn global add kresus --prefix /opt/kresus --production  && \
+    pip install simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow woob==`cat /tmp/woob_version` && \
+    yarn global add kresus@`cat /tmp/kresus_version` --prefix /opt/kresus --production  && \
     apt-get purge -y python3-pip rustc build-essential && \
     apt-get autoremove --purge -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/*;
