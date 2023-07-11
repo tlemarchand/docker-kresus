@@ -3,7 +3,7 @@
 git checkout main
 
 curl -s 'https://pypi.org/pypi/woob/json' | jq -j -r '.info.version' > woob_version
-curl -s 'curl -s 'curl -s 'https://registry.npmjs.org/kresus/latest' | jq -j -r '.version' > kresus_version
+curl -s 'https://registry.npmjs.org/kresus/latest' | jq -j -r '.version' > kresus_version
 
 git add -A
 git commit -m "Version update"
