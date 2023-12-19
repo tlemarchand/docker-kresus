@@ -20,8 +20,8 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/python python $(which python3) 1 && \
     groupadd -g 900 -r kresus && useradd --no-log-init -u 900 -r -g kresus kresus && \
     mkdir -p /var/lib/kresus && \
-    pip install --upgrade setuptools && \
-    pip install simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow woob==`cat /tmp/woob_version` && \
+    pip install --break-system-packages --upgrade setuptools && \
+    pip install --break-system-packages simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow woob==`cat /tmp/woob_version` && \
     yarn global add kresus@`cat /tmp/kresus_version` --prefix /opt/kresus --production  && \
     apt-get purge -y python3-pip rustc build-essential && \
     apt-get autoremove --purge -y && \
