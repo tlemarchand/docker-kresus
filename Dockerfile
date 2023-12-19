@@ -1,4 +1,4 @@
-FROM node:16-bullseye-slim
+FROM node:18-bookworm-slim
 LABEL maintainer="Thomas Lemarchand"
 
 COPY woob_version /tmp/woob_version
