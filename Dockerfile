@@ -23,8 +23,8 @@ RUN apt-get update && \
     pip install --break-system-packages --upgrade setuptools && \
     pip install --break-system-packages "selenium<4.1.4" && \
     pip install --break-system-packages --ignore-installed simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow pycountry Crypto jwt xlrd chompjs schwifty deprecated woob==`cat /tmp/woob_version` && \
-    yarn global add node-gyp  && \
-    yarn global add kresus@`cat /tmp/kresus_version` --prefix /opt/kresus --production  && \
+    yarnpkg global add node-gyp  && \
+    yarnpkg global add kresus@`cat /tmp/kresus_version` --prefix /opt/kresus --production  && \
     apt-get purge -y python3-pip rustc build-essential && \
     apt-get autoremove --purge -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/*;
