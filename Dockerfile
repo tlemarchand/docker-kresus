@@ -21,6 +21,7 @@ RUN apt-get update && \
     groupadd -g 900 -r kresus && useradd --no-log-init -u 900 -r -g kresus kresus && \
     mkdir -p /var/lib/kresus && \
     pip install --break-system-packages --upgrade setuptools && \
+    pip install --break-system-packages "selenium<4.1.4" && \
     pip install --break-system-packages simplejson BeautifulSoup4 PyExecJS typing-extensions pdfminer.six Pillow pycountry Crypto jwt xlrd chompjs schwifty deprecated woob==`cat /tmp/woob_version` && \
     yarn global add node-gyp  && \
     yarn global add kresus@`cat /tmp/kresus_version` --prefix /opt/kresus --production  && \
