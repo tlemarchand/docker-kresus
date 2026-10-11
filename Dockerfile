@@ -20,6 +20,7 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/python python $(which python3) 1 && \
     groupadd -g 900 -r kresus && useradd --no-log-init -u 900 -r -g kresus kresus && \
     mkdir -p /var/lib/kresus && \
+    apt-get purge -y python3-packaging && \
     pip install --break-system-packages --upgrade setuptools && \
     pip install --break-system-packages --upgrade packaging && \
     pip install --break-system-packages "selenium<4.1.4" && \
