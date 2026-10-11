@@ -14,7 +14,7 @@ COPY kresus_version /tmp/kresus_version
 # Clean everything build related.
 RUN apt-get update && \
     apt-get install -y --no-install-recommends locales python3 python3-pip mupdf-tools \
-    libnss3-tools python3-nss rustc build-essential && \
+    libnss3-tools rustc build-essential && \
     locale-gen C.UTF-8 && \
     update-locale C.UTF-8 && \
     update-alternatives --install /usr/bin/python python $(which python3) 1 && \
